@@ -1,7 +1,7 @@
 
 #define MAX 250
 
-int main(void)
+int main()
 {
 	int byteSize = 0;
 	int arraySize;
