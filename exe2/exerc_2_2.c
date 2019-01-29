@@ -1,0 +1,26 @@
+
+#define MAX 250
+
+int main(void)
+{
+	int byteSize = 0;
+	int arraySize;
+	int array[MAX];
+	for(int i =0; i < MAX ; i ++){
+		array[i] = rand() % 100;
+	}
+	
+	arraySize = sizeof(array);
+	byteSize = sizeof(array[0]);
+	printf("\nThe value of the label array(address) is : %pn", array);
+	printf("\nFirst integer in the array is (array[0]) : %d" , array[0]);
+	printf("\nThe size of an integer (number of bytes) is : %d" , byteSize);
+	printf("\nThe size of the whole array is : %d\n", arraySize);
+	for(int j = 0; j < MAX; j++) {
+        printf("int value is : %d", *(array + j));
+		printf("and double value is : %f\n", (double)*(array + j));
+    }
+		printf("\n");
+
+	return 0;
+}
