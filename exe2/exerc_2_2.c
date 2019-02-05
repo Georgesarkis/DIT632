@@ -9,6 +9,8 @@ Hassan Mohamad
 Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise points !
 ======================================*/
 
+#include <stdio.h>
+#include <stdlib.h>
 #define MAX 250
 
 int main()

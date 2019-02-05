@@ -9,11 +9,15 @@ Hassan Mohamad
 Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise points !
 ======================================*/
 
-#include<stdio.h>
+#include <string.h>
+#include <stdio.h>
+
+void WithStrcmp(char str1 [], char str2 []);
+void WithoutStrcmp(char Str1[] , char Str2[]);
 
 void main(int argc, char **argv){
-			WithStrcmp(argv[1],argv[2]);
-			WithoutStrcmp(argv[1],argv[2]);
+	WithStrcmp(argv[1],argv[2]);
+	WithoutStrcmp(argv[1],argv[2]);
 }
 
 void WithStrcmp(char str1 [], char str2 []){
@@ -22,7 +26,6 @@ void WithStrcmp(char str1 [], char str2 []){
 	if(val == 0){
 		printf("strings are the same with strcmp funcation \n");
 	}
-	
 }
 
 void WithoutStrcmp(char Str1[] , char Str2[]){
