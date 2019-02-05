@@ -1,3 +1,13 @@
+/*====================================
+File name: exerc_2_2.c
+Date: 2019-02-05
+Group nr 05
+Members that contribute to the solutions
+Sarkisian George
+Stanchev Martin
+Hassan Mohamad
+Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise points !
+======================================*/
 
 #define MAX 250
 
