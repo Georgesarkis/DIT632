@@ -1,8 +1,13 @@
-/*
- *  File    : nim.c 
- *  Program : Nim game
- *  Author  : ...
- */
+/*====================================
+File name: exerc_2_8.c
+Date: 2019-02-05
+Group nr 05
+Members that contribute to the solutions
+Sarkisian George
+Stanchev Martin
+Hassan Mohamad
+Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise points !
+======================================*/
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -83,38 +88,43 @@ int main()
   srand( time(0) );		/* Setup random */
 
   printf("Välkommen till NIM by ...");
- 
- 
   
-  pile = MAX_COINS;		/* Set start values (= init) */
-  player = HUMAN;
+  bool playAgain = true;
+ 
+  while (playAgain){
+	  
 
-  /* 
-   *  Program main loop 
-   */
-  while( true ) {	
+	  pile = MAX_COINS;		/* Set start values (= init) */
+	  player = HUMAN;
 
-    printf("Det ligger %d  mynt i högen\n", pile );
-    
-    if( player == HUMAN ){
-      n_coins = human_choice(pile);      
-    }else{
-      n_coins = computer_choice(pile);
-      printf("- Jag tog %d\n", n_coins);      
-    }
-    pile -= n_coins;
-    player = toggle( player );
-      
-    if( pile <= 1 ){
-      break;
-    }
+	  /* 
+	   *  Program main loop 
+	   */
+	  while( true ) {	
+
+		printf("Det ligger %d  mynt i högen\n", pile );
+
+		if( player == HUMAN ){
+		  n_coins = human_choice(pile);      
+		}else{
+		  n_coins = computer_choice(pile);
+		  printf("Computer - Jag tog %d\n", n_coins);      
+		}
+		pile -= n_coins;
+		  
+		if( pile <= 1 ){
+		  break;
+		}
+		player = toggle( player );
+	  }
+	  /*
+	   * end main loop
+	   */
+	   
+		write_winner( player );   
+  
+		playAgain = play_again();
   }
-  /*
-   * end main loop
-   */
-   
-  write_winner( player );   
-
  
   printf("Avslutat\n");
 
@@ -139,31 +149,48 @@ int human_choice(int pile)
 {
 	int input;
 	printf("Input number of coins you want to take between 1 to 3:");
-	scanf("%[^\n]s",input);
+	scanf("%d", &input);
+
+	clear_stdin();
+
+	while(3 < input || input < 1){
+		printf("Input number of coins you want to take between 1 to 3:");
+		scanf("%d", &input);
+		clear_stdin();
+	}
+
+	if(input > pile){
+		return pile;
+	}
+	return input;
 }
 
 int computer_choice(int pile)
 {
-
+	if(pile < 5 ){
+		return pile -1;
+	}
+	else{
+        int n = (rand() % 2) +1;
+        return n;
+	}
 }
 
 void write_winner(int player )
 {
-	char strHumen = "HUMEN";
-	char strComp = "COMPUTER";
 	if(player == HUMAN){
-		printf("Winner is : %s", strHumen);
+		printf("Winner is : HUMAN\n");
 	}else{
-		printf("Winner is : %s", strComp);
+		printf("Winner is : COMPUTER\n");
 	}
 }
 
 int play_again()
 {
 	char input;
-		printf("Do you want to play again?");
-		scanf("%[^\n]s",input);
-	if(*input == "n" || *input == "N"){
+	printf("Do you want to play again?");
+	scanf("%s",&input);
+	if(input == 'n' || input == 'N'){
 		return false;
 	}else{
 		return true;
@@ -172,5 +199,10 @@ int play_again()
 
 int toggle( int player )
 {
-
+	if(player == HUMAN){
+		return COMPUTER;
+	}
+	else{
+		return HUMAN;
+	}
 }
