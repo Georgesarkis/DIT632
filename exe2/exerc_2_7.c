@@ -18,25 +18,52 @@ void readPersnr(char *person) {
     while(1) {
         printf("Enter a personal number\n");
         scanf("%s", person);
-        if(person == "q") {
-            break;
+        if(person[0] == 'q') {
+            printf("Exiting...\n");
+            return;
         }
-        long int pers_nr = strtol(person, NULL, 10);
-        printf("%ld\n", pers_nr); 
+        
+        int nr_arr[10];
+        for(int i = 0; i < 10; i++) {
+            nr_arr[i] = person[i] - '0';
+        }
+        if( (nr_arr[2] == 1 && nr_arr[2] + nr_arr[3] <= 3) || ( nr_arr[2] == 0 && nr_arr[3] <=9 ) ) { // first digit of month is 0 or 1, second digit can be whatever
+            printf("Correct month\n");
+            if( (nr_arr[4] == 3 && nr_arr[4] + nr_arr[5] <= 4 ) || (nr_arr[4] <= 2 && nr_arr[5] <= 9) ) { //first digit of day should be 0, 1, 2 or 3 second is whatever
+                printf("Correct day\nChecking last digit...\n");
+                controlDigit(person); //do checksum
+            } else {
+                printf("Day not correct\n");
+            }
+        } else {
+            printf("Month not correct\n");
+        }
+    }
+}
 
-        char month[2];
-        month[0] = person[2]; 
-        month[1] = person[3];
-        printf("%s\n", month);
-        int monthNr = strtol(month, NULL, 2);
-        printf("%d\n", monthNr);
-        if(monthNr >= 1 && monthNr <= 12) {
-            char day[2];
-            day[0] = person[4];
-            day[1] = person[5];
-            printf("%s\n", day);
+int controlDigit(const char *persnr) {
+    int arr[10]; 
+    for(int i = 0; i < 10; i++) {
+            arr[i] = persnr[i] - '0';
         }
 
-
+    int tmp_1 = 0, tmp_2 = 0, result = 0;
+    for(int j = 0; j < 9; j++) {
+        if(j % 2 == 0) {
+            arr[j] *= 2;
+            if(arr[j] >= 10) {
+                arr[j] = (arr[j] / 10) + (arr[j] % 10); 
+            }
+        } else {
+            arr[j] *= 1;
+        }
+        result += arr[j];
+    }
+    if((10 - (result % 10)) == arr[9]) {
+        printf("correct last digit\n");
+        return 1;
+    } else {
+        printf("incorrect last digit\n");
+        return -1;
     }
 }
