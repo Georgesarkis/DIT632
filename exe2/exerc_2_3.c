@@ -35,7 +35,7 @@ void WithoutStrcmp(char Str1[] , char Str2[]){
 	int bool = 0;
 	if(strlen(Str1) == strlen(Str2)){
 		for(int i = 0;i < strlen(Str1); i++){
-			if(Str1[i] =! Str2[i]){
+			if(Str1[i] != Str2[i]){
 				bool = 1;
 			}
 		}
