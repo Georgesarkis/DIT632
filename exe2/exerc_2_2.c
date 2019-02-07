@@ -6,12 +6,12 @@ Members that contribute to the solutions
 Sarkisian George
 Stanchev Martin
 Hassan Mohamad
-Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise points !
+Demonstration code: [20209] Important , No code no exercise points !
 ======================================*/
 
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 99
+#define MAX 100
 
 int main()
 {

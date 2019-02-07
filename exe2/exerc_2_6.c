@@ -6,7 +6,7 @@ Members that contribute to the solutions
 Sarkisian George
 Stanchev Martin
 Hassan Mohamad
-Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise points !
+Demonstration code: [20296] Important , No code no exercise points !
 ======================================*/
 
 #include <stdio.h>
@@ -28,11 +28,14 @@ void main(){
 	input(list,25,max);
 	printArray(list,max);
 	output(list,max);
+	printArray(list,max);
+	output(list,max);
+	printArray(list,max);
 }
  
 void printArray(int list[], int max){
 	for(int i = 0;i < max ; i++){
-		printf("%d" , list [i]);
+		printf("%d " , list [i]);
 	}
 	printf("\n");
 }

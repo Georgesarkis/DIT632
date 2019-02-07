@@ -6,7 +6,7 @@ Members that contribute to the solutions
 Sarkisian George
 Stanchev Martin
 Hassan Mohamad
-Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise points !
+Demonstration code: [20315] Important , No code no exercise points !
 ======================================*/
 
 #include <stdio.h>
@@ -40,11 +40,40 @@ void readPersnr(char *person) {
         }
         if( (nr_arr[2] == 1 && nr_arr[2] + nr_arr[3] <= 3) || ( nr_arr[2] == 0 && nr_arr[3] <=9 ) ) { // first digit of month is 0 or 1, second digit can be whatever
             printf("Correct month\n");
-            if( (nr_arr[4] == 3 && nr_arr[4] + nr_arr[5] <= 4 ) || (nr_arr[4] <= 2 && nr_arr[5] <= 9) ) { //first digit of day should be 0, 1, 2 or 3 second is whatever
-                printf("Correct day\nChecking last digit...\n");
-                controlDigit(person); //do checksum
-            } else {
-                printf("Day not correct\n");
+            int months[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+            int numDays;
+            if(nr_arr[2] == 0 ){
+                numDays = months[nr_arr[3] -1];
+            }else{
+                if(nr_arr[2] + nr_arr[3] == 1 || nr_arr[2] + nr_arr[3] == 3){
+                    numDays = 31;
+                }else{
+                    numDays = 30;
+                }
+            }
+            if(numDays == 31){
+                if( (nr_arr[4] == 3 && nr_arr[4] + nr_arr[5] <= 4 ) || (nr_arr[4] <= 2 && nr_arr[5] <= 9) ) { //first digit of day should be 0, 1, 2 or 3 second is whatever
+                    printf("Correct day\nChecking last digit...\n");
+                    controlDigit(person); //do checksum
+                } else {
+                    printf("Day not correct\n");
+                }
+            }
+            else if(numDays == 30){
+                if( (nr_arr[4] == 3 &&  nr_arr[5] == 0 ) || (nr_arr[4] <= 2 && nr_arr[5] <= 9) ) { //first digit of day should be 0, 1, 2 or 3 second is whatever
+                    printf("Correct day\nChecking last digit...\n");
+                    controlDigit(person); //do checksum
+                } else {
+                    printf("Day not correct\n");
+                } 
+            }
+            else{
+                if( (nr_arr[4] == 2 && nr_arr[5] <= 9 ) || (nr_arr[4] <= 2 && nr_arr[5] <= 9) ) { //first digit of day should be 0, 1, 2 or 3 second is whatever
+                    printf("Correct day\nChecking last digit...\n");
+                    controlDigit(person); //do checksum
+                } else {
+                    printf("Day not correct\n");
+                }
             }
         } else {
             printf("Month not correct\n");

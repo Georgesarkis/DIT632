@@ -6,7 +6,7 @@ Members that contribute to the solutions
 Sarkisian George
 Stanchev Martin
 Hassan Mohamad
-Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise points !
+Demonstration code: [20295] Important , No code no exercise points !
 ======================================*/
 
 #include <stdio.h>
@@ -39,6 +39,7 @@ int main ( void){
 }
 
 void create_random(int *tab) {
+     srand(time(NULL));
      int i = 0, n = 0;
      for(i = 0; i<MAX; i++) {
         n = rand() % MAXNUMBER;

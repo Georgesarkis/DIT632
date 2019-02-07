@@ -6,7 +6,7 @@ Members that contribute to the solutions
 Sarkisian George
 Stanchev Martin
 Hassan Mohamad
-Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise points !
+Demonstration code: [20297] Important , No code no exercise points !
 ======================================*/
 
 #include<stdio.h>
@@ -87,7 +87,7 @@ int main()
   
   srand( time(0) );		/* Setup random */
 
-  printf("Välkommen till NIM by ...");
+  printf("Vï¿½lkommen till NIM by ...");
   
   bool playAgain = true;
  
@@ -102,7 +102,7 @@ int main()
 	   */
 	  while( true ) {	
 
-		printf("Det ligger %d  mynt i högen\n", pile );
+		printf("Det ligger %d  mynt i hï¿½gen\n", pile );
 
 		if( player == HUMAN ){
 		  n_coins = human_choice(pile);      
