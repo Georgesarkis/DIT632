@@ -11,7 +11,7 @@ Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise point
 
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 250
+#define MAX 99
 
 int main()
 {
