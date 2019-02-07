@@ -19,7 +19,7 @@ int main()
 	int arraySize;
 	int array[MAX];
 	for(int i =0; i < MAX ; i ++){
-		array[i] = rand() % 100;
+		array[i] = (rand() % 99) + 1;
 	}
 	
 	arraySize = sizeof(array);
