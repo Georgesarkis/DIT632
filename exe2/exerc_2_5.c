@@ -23,10 +23,9 @@ void count_frequency(int *tab, int *freq);
 // Use pointer
 void draw_histogram(int *freq);
 //  Use pointer
-char* convert_to_x(int a);
 
 int main ( void){
-    int table[MAX], n ;
+    int  table[MAX], n ;
     int frequency[MAXNUMBER];
     create_random(table);
 
@@ -58,7 +57,7 @@ void count_frequency(int *tab, int *freq) {
 void draw_histogram(int *freq) {
     int i = 0, j = 0;
     for(i = 0; i < MAXNUMBER; i++) {
-        printf("%d ", freq[i]);
+        printf("%d ", i);
         for(j = 0; j < freq[i]; j++) {
             printf("%s", "x");
         }

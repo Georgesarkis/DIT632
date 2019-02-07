@@ -15,7 +15,7 @@ Demonstration code: [<Ass code 1-4> <abc>] Important , No code no exercise point
 void WithStrcmp(char str1 [], char str2 []);
 void WithoutStrcmp(char Str1[] , char Str2[]);
 
-void main(int argc, char **argv){
+void main(int argc, char *argv[]){
 	WithStrcmp(argv[1],argv[2]);
 	WithoutStrcmp(argv[1],argv[2]);
 }
@@ -25,6 +25,9 @@ void WithStrcmp(char str1 [], char str2 []){
 	val = strcmp(str1,str2);
 	if(val == 0){
 		printf("strings are the same with strcmp funcation \n");
+	}
+	else{
+		printf("strings are NOT the same with strcmp funcation \n");
 	}
 }
 
@@ -42,5 +45,8 @@ void WithoutStrcmp(char Str1[] , char Str2[]){
 	}
 	if(bool == 0){
 		printf("str1 is equal to str2 without the strcmp \n");
+	}
+	else{
+		printf("str1 is NOT equal to str2 without the strcmp \n");
 	}
 }

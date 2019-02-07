@@ -25,9 +25,9 @@ void main(){
 	input(list,6,max);
 	input(list,7,max);
 	input(list,8,max);
+	input(list,25,max);
 	printArray(list,max);
 	output(list,max);
-	printArray(list,max);
 }
  
 void printArray(int list[], int max){
@@ -47,16 +47,20 @@ int input (int list [] , int number, int max){
 	for(int i = 0; i < max ; i++){
 		if(list[i] == -1){
 			list[i] = number;
-			return 0;
+			return 1;
 		}
 	}
+	return 0;
 }
 
 int output( int list[], int max){
 	int firstValue = list[0];
-	for(int i = 0; i < max-1 ; i++){
-		list[i] = list[i+1];
-	} 
-	list[max] = -1;
-	return firstValue;
+	if(firstValue != -1){
+		for(int i = 0; i < max-1 ; i++){
+			list[i] = list[i+1];
+		} 
+		list[max-1] = -1;
+		return firstValue;
+	}
+	return 0;
 }
