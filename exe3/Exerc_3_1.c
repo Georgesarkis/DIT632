@@ -25,14 +25,18 @@ void Move(ROBOT * robot);
 
 
 int main (){
-    int x,y;
+    int x = -1,y = -1;
     char directions[MAX];
     printf("Welcome! please provide starting coordinations for the robot \n");
     while(1){
-        printf("Please provide X:\n");
-        scanf("%d", &x);
-        printf("Please provide Y:\n");
-        scanf("%d", &y);
+        while(!(x >= 0 && x <= 99)){
+            printf("Please provide X:\n");
+            scanf("%d", &x);
+        }
+        while(!(y >= 0 && y <= 99)){
+            printf("Please provide Y:\n");
+            scanf("%d", &y);
+        }
         ROBOT * robot;
         robot ->xpos = x;
         robot ->ypos = y;
