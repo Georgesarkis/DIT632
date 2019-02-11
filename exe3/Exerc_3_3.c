@@ -50,11 +50,12 @@ int main(int argc, char *argv[]){
 
 
 REGTYPE* random_list(void ){
-    int nr,i=0;
+    
     REGTYPE *top, *old, *item;
     int rnadom = rand() % 100;
     printf("%d" , rnadom);
     top ->number = rnadom;
+     printf("%d" , top -> number);
     top ->next = NULL;
     top ->prev = NULL;
 
