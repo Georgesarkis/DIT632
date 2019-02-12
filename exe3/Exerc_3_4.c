@@ -29,7 +29,8 @@ void append_file(PERSON *inrecord);// appends a new person to the file
 
 
 int main( void){
-    PERSON *ppost;
+    PERSON ppost;
+    char p_name[20];
     int input;
     printf("1> Create new file\n");
     printf("2> Add new person record\n");
@@ -40,22 +41,29 @@ int main( void){
     scanf("%d", &input );
    switch(input) {
       case 1 :
-         write_new_file(ppost);
-         printf("You created a new file 'test.bin' " );
+           // Dummy Record
+            strcpy(ppost.firstname, "John");
+            strcpy(ppost.famnamne, "Doe"); 
+            strcpy(ppost.pers_number, "199101015452"); 
+            write_new_file(&ppost);
+            printf("You created a new file 'test.dat' " );
          break;
       case 2 :
-           append_file(ppost);
-           printf("You added a new person to 'test.bin' " );
+           ppost=input_record(); 
+           append_file(&ppost);
+           printf("You added a new person to 'test.dat' " );
            break;
       case 3 :
-        printf("\n" );
+        printf("Input person name\n");
+        scanf("%s", &p_name );
+        search_by_firstname(p_name);
          break;
       case 4 :
-         printf("\n" );
+         printfile();
          break;
     
       default :
-         printf("\n" );
+         printf("Exiting program...." );
    }
    
    
@@ -63,40 +71,59 @@ int main( void){
 }
 
 void write_new_file(PERSON *inrecord) {
-    // Dummy Record
-    inrecord -> firstname == "John";
-    inrecord -> famnamne == 'Doe';  
-    inrecord -> pers_number == '199101015452';  
-    
     FILE *fp;
     fp = remove("test.dat");
     fp = fopen("test.dat", "wb");
     
-    
-    fwrite(&inrecord, sizeof(PERSON), 1, fp);
+    fwrite(inrecord, sizeof(PERSON), 1, fp);
     fclose(fp);
     
 }
-// appends a new person to the file
-void append_file(PERSON *inrecord) {
-    char fname[20];
-    char lname[20];
-    char pnumber[13];
-    
+
+PERSON input_record( void) {
+    PERSON person;
     printf("Input first name\n");
-    scanf("%s", &fname ); 
+    scanf("%s", person.firstname ); 
     printf("Input family name\n");
-    scanf("%s", &lname );
+    scanf("%s", person.famnamne );
     printf("Input personal number\n");
-    scanf("%s", &pnumber);
-    
-    inrecord -> firstname == fname;
-    inrecord -> famnamne == lname;
-    inrecord -> pers_number == pnumber;
-    
+    scanf("%s", person.pers_number);
+   
+    return person;
+}
+
+// appends a new person to the file
+void append_file(PERSON *inrecord) {   
     FILE *fp;
     fp = fopen("test.dat", "ab");
-    fwrite(&inrecord, sizeof(PERSON), 1, fp);
+    fwrite(inrecord, sizeof(PERSON), 1, fp);
     fclose(fp);
 }
 
+void search_by_firstname(char *name) {
+    PERSON person;
+    FILE *fp;
+    fp = fopen("test.dat", "r");   
+    
+    while (fread(&person, sizeof(PERSON), 1, fp) != '\0') {
+        if(strcmp(person.firstname, name) ==0 || strcmp(person.famnamne,name) == 0) {
+            printf("First name: %s\tLast name: %s\tPersonal number: %s\n", person.firstname, person.famnamne, person.pers_number);
+        } 
+    } 
+    
+    fclose(fp);
+}
+
+// print out all persons in the file 
+void printfile(void) {
+    PERSON person;
+    FILE *fp;
+    fp = fopen("test.dat", "rb");
+    
+    printf("All the person records in the file:\n");
+      while (fread(&person, sizeof(PERSON), 1, fp) != '\0') {
+      printf("First name: %s\tLast name: %s\tPersonal number: %s\n", person.firstname, person.famnamne, person.pers_number);
+            
+   }
+   fclose(fp);
+}
