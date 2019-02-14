@@ -35,7 +35,7 @@ int main(int argc, char *argv[]){
     head=random_list();
     akt_post=head;
     while( akt_post!=NULL){
-        printf("\n Post nr %d : %d" , nr++, akt_post -> number);
+        printf("Post nr %d : %d\n" , nr++, akt_post -> number);
         akt_post = akt_post -> prev;
     }
     nr=0;
@@ -45,11 +45,11 @@ int main(int argc, char *argv[]){
     head = add_first(head, input);
     akt_post=head;
     while( akt_post!=NULL){
-        printf("\n Post nr %d : %d" , nr++, akt_post -> number);
+        printf("Post nr %d : %d\n" , nr++, akt_post -> number);
         akt_post = akt_post -> prev;
     }    
-  // ---Free of allocated memory ---
-  while((akt_post=head)!=NULL){
+    // ---Free of allocated memory ---
+    while((akt_post=head)!=NULL){
       head=akt_post->next;
       free(akt_post);
     }  

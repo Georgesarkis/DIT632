@@ -31,40 +31,45 @@ void append_file(PERSON *inrecord);// appends a new person to the file
 int main( void){
     PERSON ppost;
     char p_name[20];
-    int input;
-    printf("1> Create new file\n");
-    printf("2> Add new person record\n");
-    printf("3> Search for person\n");
-    printf("4> Print out all records in the file\n");
-    printf("5> Exit\n ");
-    printf("Select task to perform\n");
-    scanf("%d", &input );
-   switch(input) {
-      case 1 :
-           // Dummy Record
-            strcpy(ppost.firstname, "John");
-            strcpy(ppost.famnamne, "Doe"); 
-            strcpy(ppost.pers_number, "199101015452"); 
-            write_new_file(&ppost);
-            printf("You created a new file 'test.dat' " );
-         break;
-      case 2 :
-           ppost=input_record(); 
-           append_file(&ppost);
-           printf("You added a new person to 'test.dat' " );
-           break;
-      case 3 :
-        printf("Input person name\n");
-        scanf("%s", &p_name );
-        search_by_firstname(p_name);
-         break;
-      case 4 :
-         printfile();
-         break;
-    
-      default :
-         printf("Exiting program...." );
-   }
+    int input = 0;
+    while(input != 5){
+        printf("1> Create new file\n");
+        printf("2> Add new person record\n");
+        printf("3> Search for person\n");
+        printf("4> Print out all records in the file\n");
+        printf("5> Exit\n ");
+        printf("Select task to perform\n");
+        scanf("%d", &input );
+
+        switch(input) {
+            case 1 :
+                // Dummy Record
+                strcpy(ppost.firstname, "John");
+                strcpy(ppost.famnamne, "Doe"); 
+                strcpy(ppost.pers_number, "199101015452"); 
+                write_new_file(&ppost);
+                printf("You created a new file 'test.dat'\n " );
+                break;
+            case 2 :
+                ppost=input_record(); 
+                append_file(&ppost);
+                printf("You added a new person to 'test.dat'\n " );
+                break;
+            case 3 :
+                printf("Input person name\n");
+                scanf("%s", p_name );
+                search_by_firstname(p_name);
+                break;
+            case 4 :
+                printfile();
+                break;
+            case 5:
+                printf("Exiting program...." );
+                break;
+            default :
+                printf("please enter a number between 1 to 5.\n" );
+        }
+    }
    
    
     return(0);
@@ -72,7 +77,7 @@ int main( void){
 
 void write_new_file(PERSON *inrecord) {
     FILE *fp;
-    fp = remove("test.dat");
+    remove("test.dat");
     fp = fopen("test.dat", "wb");
     
     fwrite(inrecord, sizeof(PERSON), 1, fp);

@@ -10,6 +10,8 @@ Demonstration code: [20209]
 ======================================*/
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 #define MAX 100
 
@@ -22,7 +24,8 @@ typedef struct {
 } ROBOT;
 
 void Move(ROBOT * robot);
-
+void Turn(ROBOT * robot);
+void printRobot(ROBOT * robot);
 
 int main (){
     int x = -1,y = -1;
@@ -37,7 +40,7 @@ int main (){
             printf("Please provide Y:\n");
             scanf("%d", &y);
         }
-        ROBOT * robot;
+        ROBOT * robot = (ROBOT*)malloc(sizeof(ROBOT));;
         robot ->xpos = x;
         robot ->ypos = y;
         robot ->dir = N;
@@ -56,7 +59,7 @@ int main (){
         printf("do you want to play again?");
         scanf("%s" , &input);
         if(input == 'n'){
-            return;
+            return 0;
         }
     
     }
