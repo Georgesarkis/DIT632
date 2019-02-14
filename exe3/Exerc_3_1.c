@@ -6,7 +6,7 @@ Members that contribute to the solutions
 Sarkisian George
 Stanchev Martin
 Hassan Mohamad
-Demonstration code: [20209]
+Demonstration code: [15617]
 ======================================*/
 
 #include <stdio.h>
@@ -56,7 +56,7 @@ int main (){
         }
         printRobot(robot);
         char input;
-        printf("do you want to play again?");
+        printf("do you want to play again?\n");
         scanf("%s" , &input);
         if(input == 'n'){
             return 0;
@@ -68,14 +68,16 @@ int main (){
 }
 
 void Move(ROBOT * robot){
-    if(robot->dir == N){
+    if(robot->dir == N && robot->xpos < 99){
         robot->xpos++;
-    }else if(robot ->dir == O){
+    }else if(robot ->dir == O && robot->ypos < 99){
         robot ->ypos++;
-    }else if(robot->dir == S){
+    }else if(robot->dir == S && robot->xpos > 0){
         robot ->xpos--;
-    }else{
+    }else if(robot->dir == W && robot ->ypos > 0){
         robot -> ypos--;
+    }else{
+        printf("ERROR!!! you are trying to move out of the range.\n");
     }
 }
 void Turn(ROBOT * robot){

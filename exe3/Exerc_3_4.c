@@ -6,7 +6,7 @@ Members that contribute to the solutions
 Sarkisian George
 Stanchev Martin
 Hassan Mohamad
-Demonstration code: [20209]
+Demonstration code: [19078]
 ======================================*/
 
 #include <stdlib.h>
@@ -108,7 +108,7 @@ void append_file(PERSON *inrecord) {
 void search_by_firstname(char *name) {
     PERSON person;
     FILE *fp;
-    fp = fopen("test.dat", "r");   
+    fp = fopen("test.dat", "rb");   
     
     while (fread(&person, sizeof(PERSON), 1, fp) != '\0') {
         if(strcmp(person.firstname, name) ==0 || strcmp(person.famnamne,name) == 0) {
