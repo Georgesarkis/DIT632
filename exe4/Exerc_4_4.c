@@ -1,3 +1,13 @@
+/*====================================
+File name: exerc_3_1.c
+Date: 2019-02-11
+Group nr 05
+Members that contribute to the solutions
+Sarkisian George
+Stanchev Martin
+Hassan Mohamad
+Demonstration code: [25924]
+======================================*/
 /* *******************************
 Program file : bit_manage_function.c
 Peter Lundin / 2016-01-97
@@ -71,7 +81,4 @@ void printport( int portvalue){
          printf("  %d",binchar[j]);
 	printf(" --------Porten value = %d  \n", portvalue);
 	return ;
-}
-	
-	
-	
+}	

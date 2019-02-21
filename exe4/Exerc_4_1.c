@@ -6,7 +6,7 @@ Members that contribute to the solutions
 Sarkisian George
 Stanchev Martin
 Hassan Mohamad
-Demonstration code: [20209]
+Demonstration code: [25767]
 ======================================*/
 #include <stdio.h>
 #include <string.h>
@@ -71,7 +71,7 @@ int main (int arge, char *argv[]){
     printf("%d\n" , b);
     printf("%X\n" , b);
   }else{
-    printf("too many or too little arg.");
+    printf("too many or too little arg or input a value as 12211 without spaces.");
   }
  
 }
