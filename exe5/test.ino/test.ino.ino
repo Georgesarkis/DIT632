@@ -9,7 +9,7 @@
 #define D2 12
 
 const int segs[7] = { A, B, C, D, E, F, G };
-const byte numbers[10] = { 0b0111111, 0b0000110, 0b1011011, 0b1001111, 0b1100110, 0b1101101,
+const byte numbers[10] = { 0b0111111, 0b00000110, 0b1011011, 0b1001111, 0b1100110, 0b1101101,
 0b1111101, 0b0000111, 0b1111111, 0b1101111 };
 
 
@@ -30,21 +30,45 @@ void setup() {
 
 void loop() {
   
+  
+  int a = 0;
+  
   float val = analogRead(0);
   int temp = ((val / 1024) * 5000) / 100;
+  int max;
   
-  Serial.println(temp);
+  if(max < temp) {
+        max = temp;
+  }
+  
+    a = digitalRead(8);
+    
+    if(a == 1) {
+      Serial.println("dip switch on");
+      Serial.println(max);
+      writeDigit1(numbers[ (int)(max % 10) ]);
+      //delay(5);
+      writeDigit2(numbers[ (int)(max / 10) ]);
+      //delay(5);
+    } else {
+      Serial.println("dip switch off");
+  
+      
+      Serial.println(temp);
 
-  unsigned long startTime = millis();
-  for (unsigned long elapsed=0; elapsed < 600; elapsed = millis() - startTime) {
+      
+
+    unsigned long startTime = millis();
+    for (unsigned long elapsed=0; elapsed < 600; elapsed = millis() - startTime) {
+   
+    
     writeDigit2(numbers[ (int)(temp % 10)] );
     delay(5);
     writeDigit1(numbers[ (int)(temp / 10)] );
-    delay(1000);
+    delay(5);
   }
-  
-  
-}
+  }
+  }
 
 void writeDigit1(byte number) {
   digitalWrite(D2, HIGH);
