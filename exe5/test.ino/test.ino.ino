@@ -1,4 +1,15 @@
-#define A 1
+/*====================================
+File name: exerc_3_1.c
+Date: 2019-02-11
+Group nr 05
+Members that contribute to the solutions
+Sarkisian George
+Stanchev Martin
+Hassan Mohamad
+Demonstration code: [7030]
+======================================*/
+
+#define A 11
 #define B 2
 #define C 3
 #define D 4
@@ -17,7 +28,7 @@ int max;
 
 void setup() {
   pinMode(0 , OUTPUT);
-  pinMode(1 , OUTPUT);
+  pinMode(11 , OUTPUT);
   pinMode(2 , OUTPUT);
   pinMode(3 , OUTPUT);
   pinMode(4 , OUTPUT);
