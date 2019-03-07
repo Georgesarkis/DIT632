@@ -28,16 +28,18 @@ int main(){
 
 
 	pthread_create(&tid2, NULL, fetch, NULL);
+
    while(1){
-       if(strlen(buffer) != MAX){
-            pthread_cond_signal(&not_full);
+         printf("\nmain is executing\n");
+       /* pthread_mutex_lock( &count_mutex );
 
-       }
-       if(strlen(buffer) != 0){
-            pthread_cond_signal(&not_empty);
+        pthread_cond_wait(&not_empty, &count_mutex);
+        printf("\nbuffer input\n");
 
-       }
-		
+        pthread_cond_wait(&not_full, &count_mutex);
+        printf("\nbuffer output: %c\n" , buffer[write_pos]);
+		pthread_mutex_unlock( &count_mutex );
+*/
    }
 
 	pthread_join(tid, NULL);
@@ -50,13 +52,14 @@ void *put(){
     char input = 97;
     int pos = 0;
     while(1){
+
         pthread_mutex_lock( &count_mutex );
-        pthread_cond_wait(&not_full, &count_mutex);
-        
+        printf("\nbuffer input\n");
         buffer[write_pos] = input;
         pthread_cond_signal(&not_empty);
 
         if(write_pos > MAX){
+            pthread_cond_wait(&not_full, &count_mutex);
             write_pos = 0;
         }else{
                 write_pos ++; 
@@ -67,8 +70,10 @@ void *put(){
         else{
             input++;
         }
+
         pthread_mutex_unlock( &count_mutex );
-	
+
+
     }
    	pthread_exit(0);
 
@@ -77,20 +82,21 @@ void *put(){
 
 void *fetch(){
     while(1){
-
-
 		pthread_mutex_lock( &count_mutex );
-                        pthread_cond_wait(&not_empty, &count_mutex);
-        printf("%c", buffer[read_pos]);
+       // printf("%c", buffer[read_pos]);
+                printf("\nbuffer output: %c\n" , buffer[read_pos]);
+
         buffer[read_pos] = 0;
+        
         pthread_cond_signal(&not_full);
 
         if(read_pos > MAX){
+            pthread_cond_wait(&not_empty, &count_mutex);
             read_pos = 0;
-            printf("\n");
         }else{
             read_pos++; 
         }
+
         pthread_mutex_unlock( &count_mutex );
 
     }
