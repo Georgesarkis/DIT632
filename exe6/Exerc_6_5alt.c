@@ -30,16 +30,11 @@ int main(){
 	pthread_create(&tid2, NULL, fetch, NULL);
 
    while(1){
-         printf("\nmain is executing\n");
-       /* pthread_mutex_lock( &count_mutex );
+        for(int i = 0 ; i < 1000 ; i++){
 
-        pthread_cond_wait(&not_empty, &count_mutex);
-        printf("\nbuffer input\n");
+        }
+        printf("main is executing\n");
 
-        pthread_cond_wait(&not_full, &count_mutex);
-        printf("\nbuffer output: %c\n" , buffer[write_pos]);
-		pthread_mutex_unlock( &count_mutex );
-*/
    }
 
 	pthread_join(tid, NULL);
@@ -54,7 +49,7 @@ void *put(){
     while(1){
 
         pthread_mutex_lock( &count_mutex );
-        printf("\nbuffer input\n");
+        printf("buffer input\n");
         buffer[write_pos] = input;
         pthread_cond_signal(&not_empty);
 
@@ -84,7 +79,7 @@ void *fetch(){
     while(1){
 		pthread_mutex_lock( &count_mutex );
        // printf("%c", buffer[read_pos]);
-                printf("\nbuffer output: %c\n" , buffer[read_pos]);
+        printf("buffer output: %c\n" , buffer[read_pos]);
 
         buffer[read_pos] = 0;
         
