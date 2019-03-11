@@ -1,3 +1,13 @@
+/*====================================
+File name: exerc_6_5alt.c
+Date: 2019-03-12
+Group nr 05
+Members that contribute to the solutions
+Sarkisian George
+Stanchev Martin
+Hassan Mohamad
+Demonstration code: [25924]
+======================================*/
 // Skeleton for exercise nr 6 in WP 6 course DIT165.
 // File skeleton_wp6_6.c  
 #include <stdio.h>

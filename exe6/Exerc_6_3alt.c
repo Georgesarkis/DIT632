@@ -1,6 +1,6 @@
 /*====================================
-File name: exerc_3_1.c
-Date: 2019-02-11
+File name: exerc_6_3alt.c
+Date: 2019-03-12
 Group nr 05
 Members that contribute to the solutions
 Sarkisian George

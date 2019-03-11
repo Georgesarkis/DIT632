@@ -1,3 +1,13 @@
+/*====================================
+File name: exerc_6_4alt.c
+Date: 2019-03-12
+Group nr 05
+Members that contribute to the solutions
+Sarkisian George
+Stanchev Martin
+Hassan Mohamad
+Demonstration code: [25924]
+======================================*/
 #include <sys/time.h>
 #include <pthread.h>
 #include <stdlib.h>

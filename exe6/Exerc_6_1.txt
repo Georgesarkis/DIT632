@@ -1,3 +1,14 @@
+/*====================================
+File name: exerc_6_1.txt
+Date: 2019-03-12
+Group nr 05
+Members that contribute to the solutions
+Sarkisian George
+Stanchev Martin
+Hassan Mohamad
+Demonstration code: [25924]
+======================================*/
+
 1. two threads. the main and the one created by pthread.
 
 2.  16 creating instence of pthread
