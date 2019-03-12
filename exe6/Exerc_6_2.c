@@ -8,7 +8,12 @@ Stanchev Martin
 Hassan Mohamad
 Demonstration code: [25924]
 Version 2017-12-31
-======================================*/
+======================================
+
+Works as the sortandfind_18.c because we have pthread_join which awaits the pthread is fully executed before moving to next thread
+
+
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
