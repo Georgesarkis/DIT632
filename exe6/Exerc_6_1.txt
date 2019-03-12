@@ -11,8 +11,8 @@ Demonstration code: [25924]
 
 1. two threads. the main and the one created by pthread.
 
-2.  16 creating instence of pthread
-    17 createing instence of pthread attribute
+2.  16 creating instance of pthread
+    17 creating instance of pthread attribute
     20 initializes the thread attributes object pointed to by attr with default attribute values.
     25 create a new thread
     26 waits for the thread specified by thread to terminate.
@@ -21,4 +21,4 @@ Demonstration code: [25924]
 
 4. because they are global var.
 
-5. since the join waits to the pthread to finish if the line 26 is omitted the funcation will not wait for the random generator and the array will not be sorted and the system will not work properly.
+5. since the join waits to the pthread to finish if the line 26 is omitted the function will not wait for the random generator and the array will not be sorted and the system will not work properly.
