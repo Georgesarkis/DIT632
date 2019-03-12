@@ -18,10 +18,6 @@ Demonstration code: [25924]
 void Delay();
 void OpenDoor();
 void CloseDoor();
-int ReadSensorA();
-int ReadSensorB();
-int ReadSensorS1();
-int ReadSensorS2();
 
 unsigned char status  = (unsigned char *)ML13_Status;
 unsigned char control = (unsigned char *)ML13_Control;
@@ -29,69 +25,42 @@ unsigned char control = (unsigned char *)ML13_Control;
 
 int main(){
     while(1){
-        if(ReadSensorA() == 1){
-            status |= 1;
+        if(status & (1 << 0) == 1){
             OpenDoor();
             Delay();
             CloseDoor();
-            status =  status & 0 ;
         }
-        else if(ReadSensorB() == 1){
-            status |= (1 << 1);
+        else if(status & (1 << 1) == 1){
             OpenDoor();
             Delay();
             CloseDoor();
-            status =  status & (0<< 1) ;
         }
     }
 }
 
 void OpenDoor(){
-    control |= 1;
-    status |= (1 << 6);
-    while(ReadSensorS1() != 1 ){
+    control |= 1; // set bit 0 to indicate that we're opening the dorr
+    while(status & (1 << 6) == 1 ){ // wait until the door is opened by checking if the bit 6 is set
+
     }
-    status |= (1<< 3);
-    control &= 0;
+    control &= 0; // unset bit 0
 }
 
 void CloseDoor(){
-    control |= (1 << 1);
-    status =  status & (0<< 3) ;
-    status =  status & (0<< 6) ;
-    status |= ( 1 << 7);
-    while(ReadSensorS2() != 1){
-        if(ReadSensorA() == 1 || ReadSensorB() == 1){
-            control &= (0 << 1);
-            status &= (0 << 7);
-            OpenDoor();
-            Delay();
-            control |= (1 << 1);
-            status =  status & (0<< 3) ;
-            status =  status & (0<< 6) ;
-            status |= ( 1 << 7);
+    control |= (1 << 1); // set bit 1 to indicate we're closing the door
+    while(status & (1 << 7) == 1){ // wait until the door is closed by checking if bit 7 is set or unset
+        if(status & (1 << 0) == 1 || status & (1 << 1) == 1){ // if anyone tries to go in while the door is closing, the sensor detects them
+            control &= (0 << 1); // stop the closing sequence
+            OpenDoor(); // open door again
+            Delay(); 
+            control |= (1 << 1); // start closing again
         }
     }
-    control &= (0 << 1);
-    status =  status & (0<< 7) ;
+    control &= (0 << 1); // set bit 1 as 0 
 }
 
 void Delay(){
     for(int i = 0; i < 10000 ; i++){
         
     }
-}
-
-int ReadSensorA(){//of the sensor A is active or sensor B is active it will return 1
-    return 1;
-}
-int ReadSensorB(){//of the sensor A is active or sensor B is active it will return 1
-    return 1;
-}
-
-int ReadSensorS1(){
-    return 1;
-}
-int ReadSensorS2(){
-    return 1;
 }
